@@ -25,7 +25,7 @@ if(targets.length == 0 || targets.length > 1){
 	let targetMaxHealth = target.data.attributes.hp.max;
 
 	if(targetCurrentHealth < targetMaxHealth){
-		// print out chat message for favorite enemy attack
+		// print out chat message for hurt state
 			ChatMessage.create({
 				speaker: {
 					alias: currentActor.data.name
@@ -42,7 +42,7 @@ if(targets.length == 0 || targets.length > 1){
 
 			game.dnd5e.rollItemMacro(itemName);
 
-			// reset bonus after 500 ms
+			// reset damage die after 500 ms
 			setTimeout(function(){ 
 					item.update({
 						'data.damage.parts': unhurtDmg,
