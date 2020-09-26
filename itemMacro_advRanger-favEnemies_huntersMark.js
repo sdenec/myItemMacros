@@ -33,7 +33,13 @@ if(targets.length == 0 || targets.length > 1){
   let isMarked = false;
 
   let activeEffects = target.flags.dynamiceffects?.activeEffects;
-  let huntersMark = activeEffects.filter(activeEffect => activeEffect._itemName == featName);
+  if(activeEffects){
+    let huntersMark = activeEffects.filter(activeEffect => activeEffect._itemName == featName);
+
+    if(huntersMark.length != 0){
+      isMarked = true;
+    }
+  }
 
   // if favorite enemy apply bonus
   for (let i=0, max = favEnemies.length; i < max; i++){
@@ -43,10 +49,6 @@ if(targets.length == 0 || targets.length > 1){
       // stop execution
       break;
     }
-  }
-
-  if(huntersMark.length != 0){
-    isMarked = true;
   }
 
   if(isFav && isMarked){
